@@ -44,12 +44,11 @@ layout: table_wrappers
           {% if site.aux_links != nil || should_show_edit_link %}
             <ul class="list-style-none text-small aux-nav">
               {% for link in site.aux_links %}
-                <li class="d-inline-block my-0{% unless forloop.last && !should_show_edit_link %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
+                <li class="d-inline-block my-0{% unless forloop.last || should_show_edit_link %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
               {% endfor %}
               {% if should_show_edit_link %}
-                {% assign my_url = page.url %}
-                {% assign my_size = my_url | size | minus: 5 %}
-                {% assign my_edit_url = my_url | slice: 0, size %}
+                {% assign my_size = page.url | size | minus: 5 %}
+                {% assign my_edit_url = page.url | slice: 0, my_size %}
                 <li class="d-inline-block my-0 mr-2"><a href="https://github.com/LOST-STATS/LOST-STATS.github.io{{ my_edit_url }}.md">Edit this page</a></li>
               {% endif %}
             </ul>
