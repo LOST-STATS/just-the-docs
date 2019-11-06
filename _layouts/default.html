@@ -43,6 +43,7 @@ layout: table_wrappers
           {% if site.edit_links == true and page.edit_links != false %}{% assign global_edit_link = true %}{% else %}{% assign global_edit_link = false %}{% endif %}
           {% if page.edit_links == true %}{% assign local_edit_link = true %}{% else %}{% assign local_edit_link = false %}{% endif %}
           {% if global_edit_link or local_edit_link %}{% assign should_show_edit_link = true %}{% else %}{% assign should_show_edit_link = false %}{% endif %}
+          {% if page.url == '/' %}{% assign should_show_edit_link = false %}{% endif %}
           {% if site.aux_links != nil or should_show_edit_link %}
             <ul class="list-style-none text-small aux-nav">
               {% for link in site.aux_links %}
