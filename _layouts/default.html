@@ -40,11 +40,11 @@ layout: table_wrappers
             <div class="js-search-results search-results-wrap"></div>
           </div>
           {% endif %}
-          {% assign should_show_edit_link = ((site.edit_links == true && page.edit_links != false) || page.edit_links == true) %}
-          {% if site.aux_links != nil || should_show_edit_link %}
+          {% assign should_show_edit_link = ((site.edit_links == true and page.edit_links != false) or page.edit_links == true) %}
+          {% if site.aux_links != nil or should_show_edit_link %}
             <ul class="list-style-none text-small aux-nav">
               {% for link in site.aux_links %}
-                <li class="d-inline-block my-0{% unless forloop.last || should_show_edit_link %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
+                <li class="d-inline-block my-0{% unless forloop.last or should_show_edit_link %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
               {% endfor %}
               {% if should_show_edit_link %}
                 {% assign my_size = page.url | size | minus: 5 %}
