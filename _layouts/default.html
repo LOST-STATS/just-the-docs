@@ -40,19 +40,19 @@ layout: table_wrappers
             <div class="js-search-results search-results-wrap"></div>
           </div>
           {% endif %}
-          {% if site.edit_links == true and page.edit_links != false %}{% assign global_edit_link = true %}{% else %}{% assign global_edit_link = false %}{% endif %}
+          {% if site.edit_links != nil and page.edit_links != false %}{% assign global_edit_link = true %}{% else %}{% assign global_edit_link = false %}{% endif %}
           {% if page.edit_links == true %}{% assign local_edit_link = true %}{% else %}{% assign local_edit_link = false %}{% endif %}
           {% if global_edit_link or local_edit_link %}{% assign should_show_edit_link = true %}{% else %}{% assign should_show_edit_link = false %}{% endif %}
           {% if page.url == '/' %}{% assign should_show_edit_link = false %}{% endif %}
           {% if site.aux_links != nil or should_show_edit_link %}
             <ul class="list-style-none text-small aux-nav">
               {% for link in site.aux_links %}
-                <li class="d-inline-block my-0{% unless forloop.last or should_show_edit_link %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
+                <li class="d-inline-block my-0{% if forloop.last != true or should_show_edit_link %} mr-2{% endif %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
               {% endfor %}
               {% if should_show_edit_link %}
                 {% assign my_size = page.url | size | minus: 5 %}
                 {% assign my_edit_url = page.url | slice: 0, my_size %}
-                <li class="d-inline-block my-0 mr-2"><a href="https://github.com/LOST-STATS/LOST-STATS.github.io/blob/master{{ my_edit_url }}.md">Edit this page</a></li>
+                <li class="d-inline-block my-0"><a href="{{ site.edit_links.base_url }}{{ my_edit_url }}.md">{{ site.edit_links.text }}</a></li>
               {% endif %}
             </ul>
           {% endif %}
