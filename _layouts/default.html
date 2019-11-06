@@ -49,7 +49,7 @@ layout: table_wrappers
               {% if should_show_edit_link %}
                 {% assign my_size = page.url | size | minus: 5 %}
                 {% assign my_edit_url = page.url | slice: 0, my_size %}
-                <li class="d-inline-block my-0 mr-2"><a href="https://github.com/LOST-STATS/LOST-STATS.github.io{{ my_edit_url }}.md">Edit this page</a></li>
+                <li class="d-inline-block my-0 mr-2"><a href="https://github.com/LOST-STATS/LOST-STATS.github.io/blob/master{{ my_edit_url }}.md">Edit this page</a></li>
               {% endif %}
             </ul>
           {% endif %}
